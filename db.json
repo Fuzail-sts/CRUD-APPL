@@ -1,0 +1,109 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "fname": "ali",
+      "email": "ali@gmail.com"
+    },
+    {
+      "id": 2,
+      "fname": "khan",
+      "email": "khan@gmail.com"
+    },
+    {
+      "id": 3,
+      "fname": "shaikh",
+      "email": "shaikh@gmail.com"
+    },
+    {
+      "{\"fname\":\"razi\",\"email\":\"razi@gmail.com\"}": "",
+      "id": 4
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 5
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 6
+    },
+    {
+      "fname": "",
+      "email": "",
+      "id": 7
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 8
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 9
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 10
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 11
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 12
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 13
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 17
+    },
+    {
+      "fname": "",
+      "email": "",
+      "id": 18
+    },
+    {
+      "fname": "ewew",
+      "email": "",
+      "id": 19
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 20
+    },
+    {
+      "fname": "ali",
+      "email": "ali@gmail.com",
+      "id": 21
+    },
+    {
+      "fname": "razi",
+      "email": "razi@gmail.com",
+      "id": 22
+    }
+  ]
+}
