@@ -21,14 +21,16 @@ const View = () => {
   useEffect(() => {
     getData();
   }, []);
-  const getData = async () => {
-    try {
-      const datas = await axios.get(`http://localhost:3333/students/${id}`);
-      setViews(datas.data);
-      console.log(datas)
-    } catch (error) {
-      console.error("something went wrong");
-    }
+  const getData = () => {
+    axios
+      .get(`http://localhost:3333/students/${id}`)
+      .then((datas) => {
+        setViews(datas.data);
+        console.log(datas);
+      })
+      .catch((error) => {
+        console.log("something went wrong");
+      });
   };
   return (
     <>
@@ -54,8 +56,9 @@ const View = () => {
         </Table>
       </TableContainer>
       <Box textAlign="center">
-        <Link to='/'>
-        <Button variant="contained">BACK TO HOME</Button></Link>
+        <Link to="/">
+          <Button variant="contained">BACK TO HOME</Button>
+        </Link>
       </Box>
     </>
   );

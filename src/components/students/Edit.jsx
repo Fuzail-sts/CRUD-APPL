@@ -5,18 +5,36 @@ import { useParams } from "react-router";
 import axios from "axios";
 const Edit = () => {
   const { id } = useParams();
-  const [old, setOld] = useState([])
+  const [old, setOld] = useState({});
   useEffect(() => {
-   oldData()
-  }, [])
-  const oldData = async()=>{
-    try{
-      const show = await axios.get(`http://localhost:3333/students/${id}`)
-      setOld(show.data)
-    }catch(error){
-      console.log('something went wrong')
+    oldData();
+  }, []);
+  const oldData = () => {
+    axios
+      .get(`http://localhost:3333/students/${id}`)
+      .then((show) => {
+        setOld(show.data);
+      })
+      .catch((error) => {
+        console.error("something went wrong");
+      });
+  };
+  const onTextChange = (e) => {
+    setOld({ ...old, [e.target.name]: e.target.value });
+  };
+  console.log(old);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(`http://localhost:3333/students/${id}`, old);
+      setOld({
+        fname: "",
+        email: "",
+      });
+    } catch (error) {
+      console.error("something went wrong");
     }
-  }
+  };
   return (
     <>
       <Box textAlign="center" m={3}>
@@ -51,6 +69,9 @@ const Edit = () => {
                   id="fname"
                   label="fname"
                   value={old.fname}
+                  onChange={(e) => {
+                    onTextChange(e);
+                  }}
                 ></TextField>
               </Grid>
               <Grid item md={6} xs={12}>
@@ -62,6 +83,9 @@ const Edit = () => {
                   id="email"
                   label="EMAIL"
                   value={old.email}
+                  onChange={(e) => {
+                    onTextChange(e);
+                  }}
                 ></TextField>
               </Grid>
             </Grid>
@@ -72,6 +96,9 @@ const Edit = () => {
                 required
                 fullWidth
                 id="submit"
+                onClick={(e) => {
+                  handleSubmit(e);
+                }}
               >
                 ADD
               </Button>

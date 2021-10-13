@@ -11,31 +11,38 @@ const Add = () => {
     setAdds({ ...adds, [e.target.name]: e.target.value });
   };
   console.log(adds);
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await axios.post(`http://localhost:3333/students/`, adds);
-      setAdds({
-        fname: "",
-        email: "",
+
+    axios
+      .post(`http://localhost:3333/students/`, adds)
+      .then(() => {
+        setAdds({
+          fname: "",
+          email: "",
+        });
+        studentData()
+      })
+      .catch((error) => {
+        console.error("something went wrong");
       });
-    } catch (error) {
-      console.error("something went wrong");
-    }
   };
   const [students, setStudents] = useState([]);
   useEffect(() => {
     studentData();
   }, []);
-  const studentData = async () => {
-    try {
-      const studentsT = await axios.get("http://localhost:3333/students");
-      console.log(studentsT.data);
-      setStudents(studentsT.data);
-    } catch (error) {
-      console.error("something went wrong");
-    }
+  const studentData = () => {
+    axios
+      .get("http://localhost:3333/students")
+      .then((studentsT) => {
+        console.log(studentsT.data);
+        setStudents(studentsT.data);
+      })
+      .catch((error) => {
+        console.error("something went wrong");
+      });
   };
+
   return (
     <>
       <Box textAlign="center" mt={3}>
@@ -56,7 +63,7 @@ const Add = () => {
                   required
                   fullWidth
                   id="fname"
-                  value = {adds.fname}
+                  value={adds.fname}
                   onChange={(e) => {
                     onTextFieldChange(e);
                   }}
@@ -94,7 +101,7 @@ const Add = () => {
           </form>
         </Grid>
         <Grid item md={6} xs={12}>
-          <List students={students} />
+          <List students={students} set={studentData} />
         </Grid>
       </Grid>
     </>

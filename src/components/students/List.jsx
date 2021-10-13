@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import {
   Typography,
   Box,
@@ -11,13 +11,20 @@ import {
   TableContainer,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
+const List = ({ students, set }) => {
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3333/students/${id}`);
 
-const List = ({students}) => {
-  
+      set();
+    } catch (error) {
+      console.log("something went wrong");
+    }
+  };
   return (
     <>
-    
       <Box textAlign="center" mt={6}>
         <Typography variant="h4">STUDENT LIST</Typography>
       </Box>
@@ -47,9 +54,12 @@ const List = ({students}) => {
                       <Link to={`edit/${value.id}`}>E</Link>
                     </IconButton>
 
-                    <IconButton>
-                      <Link to="d">D</Link>
-                    </IconButton>
+                    <IconButton
+                      onClick={(e) => {
+                        handleDelete(value.id);
+                      }}
+                    >D
+                  </IconButton>
                   </TableCell>
                 </TableRow>
               );
