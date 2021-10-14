@@ -13,12 +13,12 @@ import {
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const List = ({ students, set }) => {
+const List = ({ students, getStudentList }) => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3333/students/${id}`);
 
-      set();
+      getStudentList();
     } catch (error) {
       console.log("something went wrong");
     }
@@ -33,17 +33,18 @@ const List = ({ students, set }) => {
           <TableHead>
             <TableRow>
               <TableCell align="center">NO</TableCell>
-              <TableCell align="center">FNAME</TableCell>
+              <TableCell align="center">NAME</TableCell>
               <TableCell align="center">EMAIL</TableCell>
               <TableCell align="center">ACTION</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {students.map((value, i) => {
+              console.log(value);
               return (
                 <TableRow key={i}>
                   <TableCell align="center">{i + 1}</TableCell>
-                  <TableCell align="center">{value.fname}</TableCell>
+                  <TableCell align="center">{value.name}</TableCell>
                   <TableCell align="center">{value.email}</TableCell>
                   <TableCell align="center">
                     <IconButton>

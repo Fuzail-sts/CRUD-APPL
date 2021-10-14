@@ -2,13 +2,13 @@
   "students": [
     {
       "id": 2,
-      "fname": "khan deepak",
+      "name": "khan deepak",
       "email": "khan@gmail.com"
     },
     {
-      "id": 3,
-      "fname": "shaikh akib",
-      "email": "shaikhakib@gmail.com"
+      "name": "nitin",
+      "email": "nitin@gmail.com",
+      "id": 3
     }
   ]
 }

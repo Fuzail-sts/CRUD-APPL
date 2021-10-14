@@ -17,16 +17,15 @@ import { Link } from "react-router-dom";
 const View = () => {
   const { id } = useParams();
   console.log(id);
-  const [views, setViews] = useState([]);
+  const [viewList, setViewList] = useState([]);
   useEffect(() => {
-    getData();
+    getStudentDataList();
   }, []);
-  const getData = () => {
+  const getStudentDataList = () => {
     axios
       .get(`http://localhost:3333/students/${id}`)
-      .then((datas) => {
-        setViews(datas.data);
-        console.log(datas);
+      .then((response) => {
+        setViewList(response.data);
       })
       .catch((error) => {
         console.log("something went wrong");
@@ -42,15 +41,15 @@ const View = () => {
           <TableHead>
             <TableRow>
               <TableCell align="center">ID</TableCell>
-              <TableCell align="center">FNAME</TableCell>
+              <TableCell align="center">NAME</TableCell>
               <TableCell align="center">EMAIL</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell align="center">{views.id}</TableCell>
-              <TableCell align="center">{views.fname}</TableCell>
-              <TableCell align="center">{views.email}</TableCell>
+              <TableCell align="center">{viewList.id}</TableCell>
+              <TableCell align="center">{viewList.name}</TableCell>
+              <TableCell align="center">{viewList.email}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

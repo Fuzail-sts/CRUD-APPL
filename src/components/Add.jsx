@@ -3,25 +3,25 @@ import { Typography, Box, Grid, TextField, Button } from "@material-ui/core";
 import List from "./students/List";
 import axios from "axios";
 const Add = () => {
-  const [adds, setAdds] = useState({
-    fname: "",
+  const [addData, setAddData] = useState({
+    name: "",
     email: "",
   });
   const onTextFieldChange = (e) => {
-    setAdds({ ...adds, [e.target.name]: e.target.value });
+    setAddData({ ...addData, [e.target.name]: e.target.value });
   };
-  console.log(adds);
+  console.log(addData);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:3333/students/`, adds)
+      .post(`http://localhost:3333/students/`, addData)
       .then(() => {
-        setAdds({
-          fname: "",
+        setAddData({
+          name: "",
           email: "",
         });
-        studentData()
+        getStudentList();
       })
       .catch((error) => {
         console.error("something went wrong");
@@ -29,14 +29,14 @@ const Add = () => {
   };
   const [students, setStudents] = useState([]);
   useEffect(() => {
-    studentData();
+    getStudentList();
   }, []);
-  const studentData = () => {
+  const getStudentList = () => {
     axios
       .get("http://localhost:3333/students")
-      .then((studentsT) => {
-        console.log(studentsT.data);
-        setStudents(studentsT.data);
+      .then((response) => {
+        console.log(response.data);
+        setStudents(response.data);
       })
       .catch((error) => {
         console.error("something went wrong");
@@ -57,13 +57,13 @@ const Add = () => {
             <Grid container spacing={2}>
               <Grid item md={6} xs={12}>
                 <TextField
-                  name="fname"
+                  name="name"
                   variant="outlined"
-                  label="FNAME"
+                  label="NAME"
                   required
                   fullWidth
-                  id="fname"
-                  value={adds.fname}
+                  id="name"
+                  value={addData.name}
                   onChange={(e) => {
                     onTextFieldChange(e);
                   }}
@@ -77,7 +77,7 @@ const Add = () => {
                   fullWidth
                   id="email"
                   label="EMAIL"
-                  value={adds.email}
+                  value={addData.email}
                   onChange={(e) => {
                     onTextFieldChange(e);
                   }}
@@ -101,7 +101,7 @@ const Add = () => {
           </form>
         </Grid>
         <Grid item md={6} xs={12}>
-          <List students={students} set={studentData} />
+          <List students={students} getStudentList={getStudentList} />
         </Grid>
       </Grid>
     </>

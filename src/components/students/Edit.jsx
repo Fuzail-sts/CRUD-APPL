@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 const Edit = () => {
   const { id } = useParams();
-  const [old, setOld] = useState({});
+  const [data, setData] = useState({});
   useEffect(() => {
     oldData();
   }, []);
@@ -13,22 +13,22 @@ const Edit = () => {
     axios
       .get(`http://localhost:3333/students/${id}`)
       .then((show) => {
-        setOld(show.data);
+        setData(show.data);
       })
       .catch((error) => {
         console.error("something went wrong");
       });
   };
   const onTextChange = (e) => {
-    setOld({ ...old, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
-  console.log(old);
-  const handleSubmit = async (e) => {
+  console.log(data);
+  const handleSubmitEdit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3333/students/${id}`, old);
-      setOld({
-        fname: "",
+      await axios.put(`http://localhost:3333/students/${id}`, data);
+      setData({
+        name: "",
         email: "",
       });
     } catch (error) {
@@ -62,13 +62,13 @@ const Edit = () => {
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
-                  name="fname"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="fname"
-                  label="fname"
-                  value={old.fname}
+                  id="name"
+                  label="name"
+                  value={data.name}
                   onChange={(e) => {
                     onTextChange(e);
                   }}
@@ -82,7 +82,7 @@ const Edit = () => {
                   fullWidth
                   id="email"
                   label="EMAIL"
-                  value={old.email}
+                  value={data.email}
                   onChange={(e) => {
                     onTextChange(e);
                   }}
@@ -97,7 +97,7 @@ const Edit = () => {
                 fullWidth
                 id="submit"
                 onClick={(e) => {
-                  handleSubmit(e);
+                  handleSubmitEdit(e);
                 }}
               >
                 ADD
