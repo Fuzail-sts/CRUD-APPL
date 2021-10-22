@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add @mui/material/utils
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add react-testing-librar
 
 PATH: 
-  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\fuzail.ansari\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Users\fuzail.ansari\AppData\Local\Microsoft\WindowsApps;C:\Users\fuzail.ansari\AppData\Roaming\nvm;C:\Program Files\nodejs
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\fuzail.ansari\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Users\fuzail.ansari\AppData\Local\Microsoft\WindowsApps;C:\Users\fuzail.ansari\AppData\Roaming\nvm;C:\Program Files\nodejs;
 
 Yarn version: 
   1.22.15
@@ -14,8 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@mui%2fmaterial/utils: Request "https://registry.yarnpkg.com/@mui%2fmaterial/utils" returned a 405
-      at Request.params.callback [as _callback] (C:\Users\fuzail.ansari\AppData\Roaming\nvm\v14.17.0\node_modules\yarn\lib\cli.js:66149:18)
+  Error: https://registry.yarnpkg.com/react-testing-librar: Not found
+      at Request.params.callback [as _callback] (C:\Users\fuzail.ansari\AppData\Roaming\nvm\v14.17.0\node_modules\yarn\lib\cli.js:66140:18)
       at Request.self.callback (C:\Users\fuzail.ansari\AppData\Roaming\nvm\v14.17.0\node_modules\yarn\lib\cli.js:140885:22)
       at Request.emit (events.js:376:20)
       at Request.<anonymous> (C:\Users\fuzail.ansari\AppData\Roaming\nvm\v14.17.0\node_modules\yarn\lib\cli.js:141857:10)

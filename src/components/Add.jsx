@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Typography, Box, Grid, TextField, Button } from "@material-ui/core";
 import List from "./students/List";
 import axios from "axios";
+
 const Add = () => {
   const [addData, setAddData] = useState({
     name: "",
     email: "",
   });
+
   const onTextFieldChange = (e) => {
     setAddData({ ...addData, [e.target.name]: e.target.value });
   };
-  console.log(addData);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     axios
       .post(`http://localhost:3333/students/`, addData)
       .then(() => {
@@ -24,18 +25,19 @@ const Add = () => {
         getStudentList();
       })
       .catch((error) => {
-        console.error("something went wrong");
+        console.error("something went wrong",error);
       });
   };
+
   const [students, setStudents] = useState([]);
   useEffect(() => {
     getStudentList();
   }, []);
+
   const getStudentList = () => {
     axios
       .get("http://localhost:3333/students")
       .then((response) => {
-        console.log(response.data);
         setStudents(response.data);
       })
       .catch((error) => {
@@ -63,6 +65,7 @@ const Add = () => {
                   required
                   fullWidth
                   id="name"
+                  placeholder="Add name..."
                   value={addData.name}
                   onChange={(e) => {
                     onTextFieldChange(e);
@@ -78,6 +81,7 @@ const Add = () => {
                   id="email"
                   label="EMAIL"
                   value={addData.email}
+                  placeholder="Add email..."
                   onChange={(e) => {
                     onTextFieldChange(e);
                   }}
@@ -86,6 +90,7 @@ const Add = () => {
             </Grid>
             <Box m={3}>
               <Button
+                data-testid="Add"
                 type="submit"
                 variant="contained"
                 required

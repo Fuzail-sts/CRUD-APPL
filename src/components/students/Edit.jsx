@@ -3,12 +3,14 @@ import { Typography, Box, Grid, TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import axios from "axios";
+
 const Edit = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   useEffect(() => {
     oldData();
   }, []);
+
   const oldData = () => {
     axios
       .get(`http://localhost:3333/students/${id}`)
@@ -19,10 +21,12 @@ const Edit = () => {
         console.error("something went wrong");
       });
   };
+
   const onTextChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   console.log(data);
+
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
     try {
@@ -35,6 +39,7 @@ const Edit = () => {
       console.error("something went wrong");
     }
   };
+  
   return (
     <>
       <Box textAlign="center" m={3}>

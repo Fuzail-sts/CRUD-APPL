@@ -20,9 +20,10 @@ const List = ({ students, getStudentList }) => {
 
       getStudentList();
     } catch (error) {
-      console.log("something went wrong");
+      console.error("something went wrong");
     }
   };
+  
   return (
     <>
       <Box textAlign="center" mt={6}>
@@ -40,9 +41,8 @@ const List = ({ students, getStudentList }) => {
           </TableHead>
           <TableBody>
             {students.map((value, i) => {
-              console.log(value);
               return (
-                <TableRow key={i}>
+                <TableRow key={i} data-testid ="item">
                   <TableCell align="center">{i + 1}</TableCell>
                   <TableCell align="center">{value.name}</TableCell>
                   <TableCell align="center">{value.email}</TableCell>

@@ -14,6 +14,7 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 const View = () => {
   const { id } = useParams();
   console.log(id);
@@ -21,6 +22,7 @@ const View = () => {
   useEffect(() => {
     getStudentDataList();
   }, []);
+
   const getStudentDataList = () => {
     axios
       .get(`http://localhost:3333/students/${id}`)
@@ -31,6 +33,7 @@ const View = () => {
         console.log("something went wrong");
       });
   };
+  
   return (
     <>
       <Box textAlign="center" mt={6}>
