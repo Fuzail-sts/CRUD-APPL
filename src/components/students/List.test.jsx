@@ -33,6 +33,6 @@ describe("List", () => {
      </BrowserRouter>);
     const divElements = await  screen.findAllByTestId(/item/i);
     console.log(divElements,'divElements');
-    expect(divElements.length).toBe(4)
+    expect(divElements.length).toBe(1)
   });
 });

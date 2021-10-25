@@ -8,6 +8,7 @@ const Add = () => {
     name: "",
     email: "",
   });
+  const [students, setStudents] = useState([]);
 
   const onTextFieldChange = (e) => {
     setAddData({ ...addData, [e.target.name]: e.target.value });
@@ -29,7 +30,6 @@ const Add = () => {
       });
   };
 
-  const [students, setStudents] = useState([]);
   useEffect(() => {
     getStudentList();
   }, []);
@@ -106,7 +106,7 @@ const Add = () => {
           </form>
         </Grid>
         <Grid item md={6} xs={12}>
-          <List students={students} getStudentList={getStudentList} />
+          <List students={students} getStudentList={getStudentList}  setStudents={setStudents}/>
         </Grid>
       </Grid>
     </>
